@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 280 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 335 75% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 280 85% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 280 85% 65%;
+
+    --radius: 1rem;
+
+    /* Custom vibrant theme */
+    --gradient-start: 280 85% 65%;
+    --gradient-mid: 320 80% 60%;
+    --gradient-end: 335 75% 55%;
+    --glow-purple: 280 85% 65%;
+    --glow-pink: 335 75% 55%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .gradient-vibrant {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)), hsl(var(--gradient-end)));
+  }
+
+  .gradient-mesh {
+    background: 
+      radial-gradient(at 27% 37%, hsla(280, 85%, 65%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 97% 21%, hsla(335, 75%, 55%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, hsla(320, 80%, 60%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, hsla(280, 85%, 65%, 0.1) 0px, transparent 50%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-box {
+    box-shadow: 0 0 40px hsla(var(--glow-purple), 0.3), 0 0 80px hsla(var(--glow-pink), 0.2);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
